@@ -1,0 +1,128 @@
+* {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.container {
+  width: 50%;
+  margin: auto;
+  background: rgb(214, 214, 214);
+  box-shadow: 0px 0px 8px 2px #b9b9b970;
+  padding: 5px;
+  border-radius: 5px;
+}
+#choosen_algorithm,
+#binary_search_order {
+  font-size: 18px;
+  padding: 5px;
+}
+.item-select-container {
+  padding: 15px;
+}
+.active {
+  color: #007bff;
+}
+#show_chosen_item {
+  text-align: center;
+}
+/* Reset default browser styles */
+.form_input {
+  box-sizing: border-box; /* Ensures padding and border are included in element's total width */
+  padding: 8px; /* Add some padding for breathing room */
+  /* Makes input box responsive within its container */
+  font-size: 16px; /* Adjust font size for readability */
+  border: 1px solid #ccc; /* Add a subtle border */
+  border-radius: 4px; /* Round the corners */
+  transition: border-color 0.3s, box-shadow 0.3s; /* Add smooth transitions */
+}
+
+/* Style when input is focused */
+.form_input:focus {
+  border-color: #007bff; /* Change border color when focused */
+  outline: none; /* Remove default focus outline */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add a subtle shadow when focused */
+}
+
+/* Style for invalid input */
+.form_input:invalid {
+  border-color: #dc3545; /* Change border color to red for invalid input */
+}
+
+/* Placeholder text style */
+.form_input::placeholder {
+  color: #aaa; /* Light gray color for placeholder text */
+}
+.button {
+  display: inline-block; /* Ensures the button respects its content's width */
+  padding: 8px 20px; /* Provides padding for comfortable click/tap area */
+  font-size: 16px; /* Adjusts the font size for readability */
+  font-weight: bold; /* Makes the text bold for emphasis */
+  text-align: center; /* Centers the text horizontally */
+  text-decoration: none; /* Removes default link underline */
+  cursor: pointer; /* Changes cursor to pointer on hover */
+  border: none; /* Removes default border */
+  border-radius: 4px; /* Rounds the corners */
+  transition: background-color 0.3s, color 0.3s; /* Adds smooth transitions */
+}
+
+/* Primary button styles */
+.primary-button {
+  background-color: #007bff; /* Sets background color */
+  color: #fff; /* Sets text color */
+}
+
+/* Secondary button styles */
+.secondary-button {
+  background-color: transparent; /* Transparent background */
+  border: 2px solid #007bff; /* Adds border */
+  color: #007bff; /* Sets text color */
+}
+
+/* Button hover styles */
+.button:hover,
+.button:focus {
+  background-color: #0056b3; /* Darker background on hover/focus */
+  color: #fff; /* Text color change on hover/focus */
+}
+.array_item {
+  width: 25px;
+  height: 25px;
+  padding: 6px;
+  font-size: 18px;
+  text-align: center;
+  border: 1px solid black;
+}
+
+.array_item::placeholder {
+  color: #dddddd;
+}
+#elements_container {
+  padding-left: 35px;
+  padding-top: 10px;
+}
+#elements_container input:not(:last-child) {
+  border-right: none;
+}
+#start_search {
+  display: none;
+}
+.numbering {
+  display: inline-block;
+  font-size: 25px;
+  font-weight: bold;
+  margin-right: 15px;
+}
+.step-two {
+  display: none;
+}
+.step-three {
+  display: none;
+}
+.step-four,
+.asc-or-desc {
+  display: none;
+}

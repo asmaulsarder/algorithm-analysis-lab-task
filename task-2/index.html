@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Algorithm Design & Analysis</title>
+    <link rel="stylesheet" href="tab.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div style="text-align: center">
+        <h2 style="margin-bottom: 5px">ALGORITHM ANALYSIS (CSE-302)</h2>
+        <h4 style="padding: 0; margin: 0">ASMAUL SARDER</h4>
+        <h4 style="padding: 0; margin: 0">BATCH: 100-A</h4>
+        <h4 style="padding: 0; margin: 0; padding-bottom: 15px">ROLL: 46</h4>
+      </div>
+      <div class="tabs">
+        <button class="tab-link active" onclick="openTab(event, 'tab1')">
+          <h3 style="padding: 0; margin: 0">SEARCHING ALGORITHM</h3>
+        </button>
+        <button class="tab-link" onclick="openTab(event, 'tab2')">
+          <h3 style="padding: 0; margin: 0">SORTING ALGORITHM</h3>
+        </button>
+
+        <!-- <button class="tab-link" onclick="openTab(event, 'tab3')">
+          <h3 style="padding: 0; margin: 0">GRAPH ALGORITHM</h3>
+        </button> -->
+        <!-- <button class="tab-link" onclick="openTab(event, 'tab3')">Tab 3</button> -->
+      </div>
+      <div id="tab1" class="tab-content" style="display: block">
+        <h3 style="text-align: center; margin: 5px">SEARCHING ALGORITHM</h3>
+        <div class="item-select-container">
+          <div>
+            <div
+              style="
+                display: inline-block;
+                font-size: 25px;
+                font-weight: bold;
+                margin-right: 15px;
+              "
+            >
+              <!-- step 1 -->
+              1.
+            </div>
+            <select
+              class="form_input"
+              name="choosen_algorithm"
+              id="choosen_algorithm"
+            >
+              <option value="">-----Select a Algorithm-----</option>
+              <option value="1">1. Linear Search</option>
+              <option value="2">2. Binary Search</option>
+            </select>
+
+            <div class="asc-or-desc">
+              <select
+                class="form_input"
+                name="binary_search_order"
+                id="binary_search_order"
+              >
+                <option value="1">1. Ascending Order</option>
+                <option value="2">2. Descending Order</option>
+              </select>
+            </div>
+            <!-- step 2 for binary search -->
+          </div>
+          <div>
+            <h2 id="show_chosen_item"></h2>
+          </div>
+
+          <!-- step 2 -->
+
+          <div class="step-two">
+            <div class="numbering">2.</div>
+            <h3 style="display: inline-block">Please enter the number of N:</h3>
+            <br />
+            <input
+              style="margin-left: 40px"
+              class="form_input"
+              id="number_of_n"
+              type="number"
+              title="input should be number"
+            />
+            <span> Or </span>
+            <label class="button secondary-button" for="data_file"
+              >Choose a Json File</label
+            >
+
+            <a id="download_file_format" class="button secondary-button"
+              >Download File Format</a
+            >
+            <input hidden type="file" id="data_file" />
+          </div>
+          <!-- step 3 -->
+          <div class="step-three">
+            <div class="numbering">3.</div>
+            <h3
+              id="step_three_title"
+              style="display: inline-block; margin-bottom: 0; padding-bottom: 0"
+            ></h3>
+            <br />
+            <span style="padding-left: 40px"
+              >Press Tab to enter the next element</span
+            >
+            <div id="elements_container"></div>
+          </div>
+
+          <!-- step 4 -->
+          <div class="step-four">
+            <div class="numbering">4.</div>
+            <h3 style="display: inline-block">
+              Enter the key you want to search for:
+            </h3>
+            <input
+              style="margin-left: 40px; display: block"
+              class="form_input"
+              id="search_key"
+              type="number"
+              title="input should be number"
+            />
+          </div>
+          <div style="text-align: center"><h2 id="show_result"></h2></div>
+          <div style="text-align: center; padding-top: 30px">
+            <button class="button secondary-button" id="start_search">
+              Start Search
+            </button>
+          </div>
+        </div>
+      </div>
+      <div id="tab2" class="tab-content">
+        <h3 style="text-align: center; margin: 10px; margin-bottom: 20px">
+          SORTING ALGORITHM
+        </h3>
+        <div>
+          <div
+            style="
+              display: inline-block;
+              font-size: 25px;
+              font-weight: bold;
+              margin-right: 15px;
+            "
+          >
+            <!-- step 1 -->
+            1.
+          </div>
+          <select
+            class="form_input"
+            name="chosen_sort_algorithm"
+            id="chosen_sort_algorithm_element"
+          >
+            <option value="">-----Select a Sorting Algorithm-----</option>
+            <option value="buble_sort">1. Buble Sort</option>
+            <option value="insertion_sort">2. Insertion Sort</option>
+            <option value="selection_sort">3. Selection Sort</option>
+          </select>
+
+          <div class="show_sort_order_element">
+            <select
+              class="form_input"
+              name="sort_order_element"
+              id="sort_order_element"
+            >
+              <option value="ascending_order">1. Ascending Order</option>
+              <option value="descending_order">2. Descending Order</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="sort-step-two">
+          <div class="numbering">2.</div>
+          <h3 style="display: inline-block">
+            Please enter the number of elements or you can chose a json file:
+          </h3>
+          <br />
+          <input
+            style="margin-left: 40px"
+            class="form_input"
+            id="sorting_number_of_n"
+            type="number"
+            title="input should be number"
+            placeholder="Enter the number"
+          />
+          <span> Or </span>
+          <label class="button secondary-button" for="sorting_data_file"
+            >Choose a Json File</label
+          >
+
+          <a id="sorting_download_file_format" class="button secondary-button"
+            >Download File Format</a
+          >
+          <input hidden type="file" id="sorting_data_file" />
+        </div>
+
+        <!-- step 3 -->
+        <div class="sorting-step-three">
+          <div class="numbering">3.</div>
+          <h3
+            id="sorting_step_three_title"
+            style="display: inline-block; margin-bottom: 0; padding-bottom: 0"
+          ></h3>
+          <br />
+          <span style="padding-left: 40px"
+            >Press Tab to enter the next element</span
+          >
+          <div id="sorting_elements_container"></div>
+        </div>
+
+        <!-- step 4 -->
+        <div class="sorting_step_four">
+          <div class="numbering">4.</div>
+          <h3 style="display: inline-block">
+            Result shown as <span id="result_title"></span>:
+          </h3>
+          <div style="text-align: center" id="show_sorting_result"></div>
+        </div>
+        <div style="text-align: center; padding-top: 30px">
+          <button class="button secondary-button" id="start_sorting">
+            Start Sort
+          </button>
+        </div>
+      </div>
+      <div id="tab3" class="tab-content">
+        <h2>Tab 3 Content</h2>
+        <p>This is the content of Tab 3.</p>
+      </div>
+    </div>
+    <script src="app.js"></script>
+    <script src="tab.js"></script>
+    <script src="sort.js"></script>
+  </body>
+</html>
