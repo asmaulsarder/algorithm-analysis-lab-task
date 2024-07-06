@@ -60,6 +60,10 @@ function stepThreeForSort() {
   } else if (selected_sort_algoright == "selection_sort") {
     sorting_step_three_title.innerHTML =
       "Enter the elements of Selection Sort:";
+  } else if (selected_sort_algoright == "marge_sort") {
+    sorting_step_three_title.innerHTML = "Enter the elements of Marge Sort:";
+  } else if (selected_sort_algoright == "quick_sort") {
+    sorting_step_three_title.innerHTML = "Enter the elements of Quick Sort:";
   } else {
     show_sorting_step_three.style.display = "none";
     sorting_step_three_title.innerHTML = "";
@@ -79,7 +83,7 @@ function stepFourForSort() {
   sorting_elements_container.innerHTML = "";
   if (sorting_number_of_n > 0) {
     for (let i = 0; i < sorting_number_of_n; i++) {
-      const element = `<input onInput="itemChangeHandaler(event)" class="array_item" type="number" id="${i}" placeholder="${
+      const element = `<input onInput="sortingItemChangeHandaler(event)" class="sorting_array_item" type="number" id="${i}" placeholder="${
         i + 1
       }">`;
       sorting_elements_container.innerHTML += element;
@@ -192,6 +196,7 @@ function sortingItemChangeHandaler(e) {
       count++;
     }
   });
+
   if (count > 0) {
     is_show_sorting_button = false;
     showSortingButton();
@@ -204,6 +209,7 @@ function sortingItemChangeHandaler(e) {
 // show sorting button
 let start_sorting = document.getElementById("start_sorting");
 function showSortingButton() {
+  console.log("hi");
   if (
     is_show_sorting_button &&
     sorting_number_of_n > 0 &&
@@ -226,6 +232,10 @@ function startSortingAlgorithm() {
     bubleSort();
   } else if (selected_sort_algoright == "insertion_sort") {
     insertionSort();
+  } else if (selected_sort_algoright == "quick_sort") {
+    quickSort();
+  } else if (selected_sort_algoright == "marge_sort") {
+    margeSort();
   } else {
     selectionSort();
   }
@@ -307,6 +317,83 @@ function selectionSort() {
     array[i] = temp;
   }
   showResult(array);
+}
+
+function quickSort() {
+  let array = getUnsortingArray();
+  function partition(array, low, high) {
+    const pivot = array[high];
+    let i = low - 1;
+
+    for (let j = low; j < high; j++) {
+      let is_ascending_order =
+        order_of_sort == "ascending_order"
+          ? array[j] < pivot
+          : array[j] > pivot;
+
+      if (is_ascending_order) {
+        i++;
+        [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+      }
+    }
+
+    [array[i + 1], array[high]] = [array[high], array[i + 1]]; // Swap pivot element to the correct position
+    return i + 1;
+  }
+
+  // Function to perform quick sort
+  function quickSortGet(array, low = 0, high = array.length - 1) {
+    if (low < high) {
+      const pi = partition(array, low, high);
+
+      quickSortGet(array, low, pi - 1); // Recursively sort elements before partition
+      quickSortGet(array, pi + 1, high); // Recursively sort elements after partition
+    }
+
+    return array;
+  }
+  showResult(quickSortGet(array));
+}
+function margeSort() {
+  let array = getUnsortingArray();
+  function merge(left, right) {
+    let sortedArray = [];
+    let leftIndex = 0;
+    let rightIndex = 0;
+
+    // Compare elements from left and right arrays and merge them in sorted order
+    while (leftIndex < left.length && rightIndex < right.length) {
+      let is_ascending_order =
+        order_of_sort == "ascending_order"
+          ? left[leftIndex] < right[rightIndex]
+          : left[leftIndex] > right[rightIndex];
+
+      if (is_ascending_order) {
+        sortedArray.push(left[leftIndex]);
+        leftIndex++;
+      } else {
+        sortedArray.push(right[rightIndex]);
+        rightIndex++;
+      }
+    }
+
+    // Concat remaining elements if any
+    return sortedArray
+      .concat(left.slice(leftIndex))
+      .concat(right.slice(rightIndex));
+  }
+  function mergeSortGet(array) {
+    if (array.length <= 1) {
+      return array;
+    }
+
+    const middleIndex = Math.floor(array.length / 2);
+    const leftArray = array.slice(0, middleIndex);
+    const rightArray = array.slice(middleIndex);
+
+    return merge(mergeSortGet(leftArray), mergeSortGet(rightArray));
+  }
+  showResult(mergeSortGet(array));
 }
 
 function getUnsortingArray() {
